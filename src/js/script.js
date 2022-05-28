@@ -82,26 +82,6 @@ buttonsPromo.forEach(function (button) {
   };
 });
 
-//функция закрывания модальных окон
-const modals = document.querySelectorAll(".modal");
-
-function closeModal(item) {
-  item = modals.getElementById("[data-modal]");
-  console.log(item);
-  item.style.display = "none";
-}
-
-modals.forEach(function (buttonClose) {
-  buttonClose.onclick = function (event) {
-    if (event.target.className != "modal__close") {
-      return;
-    } else {
-      overlay.style.display = "none";
-      closeModal(event);
-    }
-  };
-});
-
 //Кнопки в секции табов "купить"
 
 const buttonsOrder = document.querySelectorAll(".button_mini");
@@ -114,5 +94,26 @@ buttonsOrder.forEach(function (button) {
       overlay.style.display = "block";
       modalOrder.style.display = "block";
     }
+  };
+});
+
+// функция закрывания модальных окон
+const modals = document.querySelectorAll(".modal");
+
+function closeModal(item) {
+  modalActive = modals.getElementById(`${item}`);
+  //т.к. не находится ID не происходит скрытие
+  console.log(modalActive);
+  modalActive.style.display = "none";
+}
+
+modals.forEach(function (buttonClose) {
+  buttonClose.onclick = function (event) {
+    if (event.target.className != "modal__close") {
+      return;
+    }
+    overlay.style.display = "none";
+    closeModal(event.target.dataset.id);
+    console.log(event.target.dataset.id); //undefined
   };
 });

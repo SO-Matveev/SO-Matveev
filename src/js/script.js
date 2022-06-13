@@ -101,6 +101,7 @@ buttonsOrder.forEach(function (button) {
 const modals = document.querySelectorAll(".modal");
 
 function closeModal(item) {
+  console.log(item);
   modalActive = modals.getElementById(`${item}`);
   //т.к. не находится ID не происходит скрытие
   console.log(modalActive);
@@ -112,8 +113,9 @@ modals.forEach(function (buttonClose) {
     if (event.target.className != "modal__close") {
       return;
     }
+    console.log(event.currentTarget.id); //order
     overlay.style.display = "none";
-    closeModal(event.target.dataset.id);
-    console.log(event.target.dataset.id); //undefined
+    closeModal(event.currentTarget.id);
+    console.log(closeModal());
   };
 });

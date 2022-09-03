@@ -12,4 +12,4 @@
 * gulp - старт проекта на локальном сервере localhost:3000
 
 ## Просмотр задеплойенного проекта на Vercel:
-pulse-static.vercel.app/
+https://pulse-static.vercel.app/
